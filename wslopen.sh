@@ -6,6 +6,7 @@ VERSION="0.0.1"
 WIN_CMD="/mnt/c/Windows/System32/cmd.exe"
 DISTRO=$(cat /etc/issue | awk '{printf $1}')
 PROG=wslopen
+URL_REGEXP='(https?|ftp|file)://[-[:alnum:]\+&@#/%?=~_|!:,.;]*[-[:alnum:]\+&@#/%=~_|]'
 
 wslopen_help() {
     echo "wslopen: open files, directories and urls inside wsl/wsl2 using host apps"
@@ -15,17 +16,6 @@ wslopen_help() {
 wslopen_version() {
     echo "$PROG version $VERSION"
 }
-
-if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
-    wslopen_help
-    exit 0
-elif [ "$1" == "-v" ] || [ "$1" == "--version" ]; then
-    wslopen_version
-    exit 0
-elif [ "$#" -eq 0 ]; then
-    wslopen_help
-    exit 1
-fi
 
 wslopen_get_file_uri() {
     local filepath=$(readlink -f $wslopen_input)
@@ -43,7 +33,16 @@ wslopen_get_url_uri() {
     wslopen_uri=$wslopen_input
 }
 
-URL_REGEXP='(https?|ftp|file)://[-[:alnum:]\+&@#/%?=~_|!:,.;]*[-[:alnum:]\+&@#/%=~_|]'
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    wslopen_help
+    exit 0
+elif [ "$1" == "-v" ] || [ "$1" == "--version" ]; then
+    wslopen_version
+    exit 0
+elif [ "$#" -eq 0 ]; then
+    wslopen_help
+    exit 1
+fi
 
 for filepath in "$@"; do
     if [[ $filepath =~ $URL_REGEXP ]]; then
