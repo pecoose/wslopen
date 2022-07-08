@@ -25,7 +25,8 @@ EOL
 # test normal case
 ./index.sh $html
 ./index.sh https://github.com
-./index.sh $html https://github.com $html
+./index.sh .
+./index.sh $html https://github.com $html .
 
 # test invalid case
 ./index.sh 123
