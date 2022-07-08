@@ -1,20 +1,25 @@
 #! /usr/bin/env bash
 
-# edge file:\\wsl$\\Ubuntu\\home\\rbamb\\tutorial\\webpack\\guide\\dist\\index.html
+# file format: "file:\\wsl$\\Ubuntu\\home\\user\\some\\directories\\index.html"
 
 VERSION="0.0.1"
+
+browser_help() {
+    echo "Open files and urls inside wsl[2]"
+    echo "usage: open <file[s] | url[s]>"
+}
 
 if [[ -z "${BROWSER}" ]]; then
     echo 'variable $BROWSER not set.'
     exit 1
 elif [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
-    echo "usage: browser <file[s] | url[s]>"
+    browser_help
     exit 0
 elif [ "$1" == "-v" ] || [ "$1" == "--version" ]; then
-    echo "browser version $VERSION"
+    echo "open version $VERSION"
     exit 0
 elif [ "$#" -eq 0 ]; then
-    echo "usage: browser <file[s] | url[s]>"
+    browser_help
     exit 1
 fi
 
