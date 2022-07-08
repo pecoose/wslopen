@@ -6,11 +6,7 @@
 make install
 ```
 
-This program depends on variable `$BROWSER`, which refers to a win10 executable browser. You can put `BROWSER` variable in your `.bashrc`:
-
-```bash
-export BROWSER='/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
-```
+This program depends on windows execuable `cmd.exe`, which shoule be basically at any windows machine . wslopen will open files or urls on the default browser of win10 system.
 
 Tested on wsl2 ubuntu 20.04.
 
@@ -19,7 +15,7 @@ Tested on wsl2 ubuntu 20.04.
 * [x] open files
 * [x] open urls
 * [x] support ubuntu distro
-* [ ] support other wsl/wsl2 distros
+* [x] support other wsl/wsl2 distros
 
 ## Examples
 
