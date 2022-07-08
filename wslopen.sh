@@ -36,7 +36,7 @@ wslopen_get_url_uri() {
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
     wslopen_help
     exit 0
-elif [ "$1" == "-v" ] || [ "$1" == "--version" ]; then
+elif [ "$1" == "-v" ] || [ "$1" == "-V" ] || [ "$1" == "--version" ]; then
     wslopen_version
     exit 0
 elif [ "$#" -eq 0 ]; then
