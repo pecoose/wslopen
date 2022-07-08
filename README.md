@@ -6,7 +6,7 @@
 make install
 ```
 
-this tools depends on variable `$BROWSER`, which refers to a win10 browser link. You can put BROWSER variable in your `.bashrc`:
+This program depends on variable `$BROWSER`, which refers to a win10 executable browser. You can put `BROWSER` variable in your `.bashrc`:
 
 ```bash
 export BROWSER='/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
