@@ -12,6 +12,15 @@ This program depends on variable `$BROWSER`, which refers to a win10 executable 
 export BROWSER='/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'
 ```
 
+Tested on wsl2 ubuntu 20.04.
+
+## features
+
+* [x] open html files
+* [x] open urls
+* [x] support ubuntu distro
+* [x] support other wsl2 distros
+
 ## examples
 
 ```bash
@@ -20,3 +29,4 @@ open https://github.com
 open index.html https://github.com
 open a.html b.html
 ```
+
