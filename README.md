@@ -1,4 +1,4 @@
-# wslopen: open files and urls using win10 browser inside wsl/wsl2
+# wslopen: open files, directories and urls using win10 applications inside wsl/wsl2
 
 ## Installation
 
@@ -6,7 +6,7 @@
 make install
 ```
 
-This program depends on windows execuable `cmd.exe`, which shoule be basically at any windows machine . wslopen will open files or urls on the default browser of win10 system.
+This program depends on windows execuable `cmd.exe`, which shoule be basically at any windows machine. 
 
 Tested on wsl2 ubuntu 20.04.
 
