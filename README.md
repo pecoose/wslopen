@@ -16,10 +16,10 @@ Tested on wsl2 ubuntu 20.04.
 
 ## Features
 
-* [x] open html files
+* [x] open files
 * [x] open urls
 * [x] support ubuntu distro
-* [ ] support other wsl2 distros
+* [ ] support other wsl/wsl2 distros
 
 ## Examples
 
