@@ -27,15 +27,5 @@ EOL
 ./index.sh https://github.com
 ./index.sh $html https://github.com $html
 
-# test BROWSER variable
-browser_val=$BROWSER
-BROWSER=
-./index.sh $html
-
-BROWSER=$browser_val
-
 # test invalid case
 ./index.sh 123
-
-# release temp file
-unlink $html

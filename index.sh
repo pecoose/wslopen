@@ -1,32 +1,33 @@
 #! /usr/bin/env bash
 
 # file format: "file:\\wsl$\\Ubuntu\\home\\user\\some\\directories\\index.html"
+#               file:\\wsl$\\Ubuntu\\tmp\\tmp.W3hv39GEmG\\test.html
+# /mnt/c/Windows/System32/cmd.exe /c "start https://github.com" > /dev/null 2>/dev/null
 
 VERSION="0.0.1"
+WIN_CMD="/mnt/c/Windows/System32/cmd.exe"
+DISTRO=$(cat /etc/issue | awk '{printf $1}')
 
-browser_help() {
+open_help() {
     echo "Open files and urls inside wsl[2]"
     echo "usage: open <file[s] | url[s]>"
 }
 
-if [[ -z "${BROWSER}" ]]; then
-    echo 'variable $BROWSER not set.'
-    exit 1
-elif [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
-    browser_help
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    open_help
     exit 0
 elif [ "$1" == "-v" ] || [ "$1" == "--version" ]; then
     echo "open version $VERSION"
     exit 0
 elif [ "$#" -eq 0 ]; then
-    browser_help
+    open_help
     exit 1
 fi
 
 open_file() {
     local filepath=$(readlink -f $open_input)
-    local res=${filepath//[\/]/\\\\}
-    open_uri="file:\\\\wsl$\\\\Ubuntu\\"$res
+    local win_filepath=${filepath//[\/]/\\\\\\\\}
+    open_uri="\\\\\\\\wsl$\\\\\\\\$DISTRO"$win_filepath
 }
 
 open_url() {
@@ -48,6 +49,6 @@ for filepath in "$@"; do
         echo "not a valid input: $filepath"
         continue
     fi
-    "$BROWSER" $open_uri
+    eval "$WIN_CMD /c start \"$open_uri\" >/dev/null 2>/dev/null"
 done
 
