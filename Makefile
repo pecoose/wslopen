@@ -1,10 +1,10 @@
-PROG := open
+PROG := wslopen
 PREFIX := /usr/local/bin
 
 .PHONY: install uninstall
 
 install:
-	chmod +x index.sh && sudo ln -fs $(shell pwd)/index.sh ${PREFIX}/${PROG}
+	ln -fs $(shell pwd)/wslopen.sh ${PREFIX}/${PROG}
 
 uninstall:
-	sudo rm ${PREFIX}/${PROG}
+	rm ${PREFIX}/${PROG}
