@@ -1,11 +1,13 @@
 #! /usr/bin/env bash
 
+WSL_OPEN=./wslopen.sh
+
 # test basic input
-./index.sh
-./index.sh -h
-./index.sh --help
-./index.sh -v
-./index.sh --version
+$WSL_OPEN
+$WSL_OPEN -h
+$WSL_OPEN --help
+$WSL_OPEN -v
+$WSL_OPEN --version
 
 tmp_d=$(mktemp -d)
 html="$tmp_d/test.html"
@@ -23,10 +25,10 @@ cat >$html<<EOL
 EOL
 
 # test normal case
-./index.sh $html
-./index.sh https://github.com
-./index.sh .
-./index.sh $html https://github.com $html .
+$WSL_OPEN $html
+$WSL_OPEN https://github.com
+$WSL_OPEN .
+$WSL_OPEN $html https://github.com $html .
 
 # test invalid case
-./index.sh 123
+$WSL_OPEN 123
