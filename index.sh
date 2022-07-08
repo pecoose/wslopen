@@ -28,6 +28,12 @@ open_file() {
     open_uri="\\\\\\\\wsl$\\\\\\\\$DISTRO"$win_filepath
 }
 
+open_dir() {
+    local filepath=$(readlink -f $open_input)
+    local win_filepath=${filepath//[\/]/\\\\}
+    open_uri="\\\\\\\\wsl$\\\\$DISTRO"$win_filepath
+}
+
 open_url() {
     open_uri=$open_input
 }
@@ -43,6 +49,10 @@ for filepath in "$@"; do
         open_input=$filepath
         echo "open file $filepath"
         open_file
+    elif [[ -d $filepath ]]; then
+        open_input=$filepath
+        echo "open directory $filepath"
+        open_dir
     else
         echo "not a valid input: $filepath"
         continue

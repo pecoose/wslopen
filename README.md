@@ -14,6 +14,7 @@ Tested on wsl2 ubuntu 20.04.
 
 * [x] open files
 * [x] open urls
+* [x] open directories
 * [x] support ubuntu distro
 * [x] support other wsl/wsl2 distros
 
