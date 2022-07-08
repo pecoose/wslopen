@@ -1,4 +1,4 @@
-# wslbrowser: open files and urls using win10 browser inside wsl/wsl2
+# wslopen: open files and urls using win10 browser inside wsl/wsl2
 
 ## installation
 
