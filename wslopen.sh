@@ -10,7 +10,7 @@ URL_REGEXP='(https?|ftp|file)://[-[:alnum:]\+&@#/%?=~_|!:,.;]*[-[:alnum:]\+&@#/%
 
 wslopen_help() {
     echo "wslopen: open files, directories and urls inside wsl/wsl2 using host apps"
-    echo "    usage: $PROG [-v | --version] [-h | --help] [file] [directory] [url]"
+    echo "    usage: $PROG [-v | -V | --version] [-h | --help] [file] [directory] [url]"
 }
 
 wslopen_version() {
