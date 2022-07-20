@@ -18,7 +18,7 @@ wslopen_version() {
 }
 
 wslopen_get_file_uri() {
-    local filepath=$(readlink -f $wslopen_input)
+    local filepath=$(readlink -f "$wslopen_input")
     local win_filepath=${filepath//[\/]/\\\\\\\\}
     wslopen_uri="\\\\\\\\wsl$\\\\\\\\$DISTRO"$win_filepath
 }
@@ -61,6 +61,6 @@ for filepath in "$@"; do
         echo "[ERROR] not a valid input: $filepath"
         continue
     fi
-    eval "$WIN_CMD /c start \"$wslopen_uri\" >/dev/null 2>/dev/null"
+    eval "$WIN_CMD /c start \"\" \"$wslopen_uri\" >/dev/null 2>/dev/null"
 done
 
