@@ -28,7 +28,6 @@ EOL
 $WSL_OPEN $html
 $WSL_OPEN https://github.com
 $WSL_OPEN .
-$WSL_OPEN $html https://github.com $html .
 
 # test invalid case
 $WSL_OPEN 123
