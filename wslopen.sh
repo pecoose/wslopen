@@ -12,7 +12,7 @@ VALID_ARGS=$(getopt -o vbh --long version,verbose,'help' -- "$@")
 
 function wslopen_help() {
     echo "wslopen: open files, directories and urls inside wsl/wsl2 using host apps"
-    echo "    usage: $PROG [-v | -V | --version] [-b | --verbose] [-h | --help] [file | directory | url]"
+    echo "    usage: $PROG [-v | --version] [-b | --verbose] [-h | --help] [file | directory | url]"
 }
 
 function wslopen_version() {
