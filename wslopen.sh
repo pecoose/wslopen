@@ -22,13 +22,13 @@ function wslopen_version() {
 function wslopen_get_file_uri() {
     local filepath=$(readlink -f "$1")
     local win_filepath=${filepath//[\/]/\\\\\\\\}
-    echo "\\\\\\\\wsl$\\\\\\\\$DISTRO"$win_filepath
+    echo "\\\\\\\\wsl$\\\\\\\\$DISTRO"$win_filepath""
 }
 
 function wslopen_get_dir_uri() {
     local filepath=$(readlink -f "$1")
     local win_filepath=${filepath//[\/]/\\\\}
-    echo "\\\\\\\\wsl$\\\\$DISTRO"$win_filepath
+    echo "\\\\\\\\wsl$\\\\$DISTRO"$win_filepath""
 }
 
 function wslopen_get_url_uri() {
@@ -66,17 +66,17 @@ while [ : ]; do
     esac
 done
 
-if [[ $WSLOPEN_INPUT =~ $URL_REGEXP ]]; then
-    [ $VERBOSE_MODE == 1 ] && echo "opened url $WSLOPEN_INPUT"
-    wslopen_uri=$(wslopen_get_url_uri $WSLOPEN_INPUT)
-elif [[ -f $WSLOPEN_INPUT ]]; then
-    [ $VERBOSE_MODE == 1 ] && echo "opened file $WSLOPEN_INPUT"
-    wslopen_uri=$(wslopen_get_file_uri $WSLOPEN_INPUT)
-elif [[ -d $WSLOPEN_INPUT ]]; then
-    [ $VERBOSE_MODE == 1 ] && echo "opened directory $WSLOPEN_INPUT"
-    wslopen_uri=$(wslopen_get_dir_uri $WSLOPEN_INPUT)
+if [[ "$WSLOPEN_INPUT" =~ "$URL_REGEXP" ]]; then
+    [ $VERBOSE_MODE == 1 ] && echo "opened url "$WSLOPEN_INPUT""
+    wslopen_uri=$(wslopen_get_url_uri "$WSLOPEN_INPUT")
+elif [[ -f "$WSLOPEN_INPUT" ]]; then
+    [ $VERBOSE_MODE == 1 ] && echo "opened file "$WSLOPEN_INPUT""
+    wslopen_uri=$(wslopen_get_file_uri "$WSLOPEN_INPUT")
+elif [[ -d "$WSLOPEN_INPUT" ]]; then
+    [ $VERBOSE_MODE == 1 ] && echo "opened directory "$WSLOPEN_INPUT""
+    wslopen_uri=$(wslopen_get_dir_uri "$WSLOPEN_INPUT")
 else
-    echo "[ERROR] not a valid input: $WSLOPEN_INPUT"
+    echo "[ERROR] not a valid input: "$WSLOPEN_INPUT""
     exit 1
 fi
 eval "$WIN_CMD /c start \"\" \"$wslopen_uri\" >/dev/null 2>/dev/null"
