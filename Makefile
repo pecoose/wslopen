@@ -1,9 +1,9 @@
-PROG := wslopen
+PROG := open
 PREFIX := /usr/local/bin
 
 .PHONY: install uninstall test
 
-test: 
+test:
 	bash test.sh
 
 install:
