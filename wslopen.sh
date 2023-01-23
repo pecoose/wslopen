@@ -40,10 +40,9 @@ wslopen_file_proto() {
   echo $(wslfile2win "$filepath")
 }
 
-# git@github.com:rbamb/memo.git
 wslopen_git_proto() {
   local giturl="$1"
-  local res=$(echo $giturl | sed -r 's/git@/https:\/\//g' | sed -r 's/:/\//2' | sed -r 's/\.git//g')
+  local res=$(echo $giturl | sed -e 's/\.git//g' -e 's/:/\//g' -e 's/git@/https:\/\//g')
   echo "$res"
 }
 
