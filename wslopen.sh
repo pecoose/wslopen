@@ -40,6 +40,13 @@ wslopen_file_proto() {
   echo $(wslfile2win "$filepath")
 }
 
+# git@github.com:rbamb/memo.git
+wslopen_git_proto() {
+  local giturl="$1"
+  local res=$(echo $giturl | sed -r 's/git@/https:\/\//g' | sed -r 's/:/\//2' | sed -r 's/\.git//g')
+  echo "$res"
+}
+
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
   wslopen_help
   exit 0
@@ -56,6 +63,8 @@ for something in "$@"; do
     target=$(wslopen_https_proto "$something")
   elif [[ "$something" == file://* ]]; then
     target=$(wslopen_file_proto "$something")
+  elif [[ "$something" == git@* ]]; then
+    target=$(wslopen_git_proto "$something")
   elif [[ -f "$something" ]]; then
     target=$(wslfile2win "$something")
   elif [[ -d "$something" ]] || [[ "$something" == \.+ ]]; then
